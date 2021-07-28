@@ -1,7 +1,7 @@
 // Copyright 2012 The Emscripten Authors.  All rights reserved.
 // Emscripten is available under two separate licenses, the MIT license and the
 // University of Illinois/NCSA Open Source License.  Both these licenses can be
-// found in the LICENSE file.
+// found in the LICENSE file
 
 #include <string>
 #include <malloc.h>
@@ -973,6 +973,7 @@ struct NestedStruct {
 struct ArrayInStruct {
     int field1[2];
     NestedStruct field2[2];
+    char field3[2];
 };
 ArrayInStruct emval_test_take_and_return_ArrayInStruct(ArrayInStruct cs) {
     return cs;
@@ -1859,6 +1860,10 @@ EMSCRIPTEN_BINDINGS(tests) {
         .element(emscripten::index<0>())
         .element(emscripten::index<1>())
         ;
+    value_array<std::array<char, 2>>("array_char_2")
+        .element<0>()
+        .element<1>()
+        ;
     value_object<NestedStruct>("NestedStruct")
         .field("x", &NestedStruct::x)
         .field("y", &NestedStruct::y)
@@ -1867,6 +1872,7 @@ EMSCRIPTEN_BINDINGS(tests) {
     value_object<ArrayInStruct>("ArrayInStruct")
         .field("field1", &ArrayInStruct::field1)
         .field("field2", &ArrayInStruct::field2)
+        .field("field3", &ArrayInStruct::field3)
         ;
     function("emval_test_take_and_return_ArrayInStruct", &emval_test_take_and_return_ArrayInStruct);
 

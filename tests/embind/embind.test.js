@@ -1455,14 +1455,16 @@ module({
               field2: [
                 { x: 1, y: 2 },
                 { x: 3, y: 4 }
-              ]
+              ],
+              field3: [1, 2]
             });
             assert.deepEqual({
               field1: [1, 2],
               field2: [
                 { x: 1, y: 2 },
                 { x: 3, y: 4 }
-              ]
+              ],
+              field3: [1, 2]
             }, d);
         });
 

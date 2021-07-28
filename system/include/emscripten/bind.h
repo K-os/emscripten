@@ -861,7 +861,7 @@ public:
     }
 
     template<int Index>
-    value_array& element(index<Index>) {
+    value_array& element(index<Index> = {}) {
         using namespace internal;
         ClassType* null = 0;
         typedef typename std::remove_reference<decltype((*null)[Index])>::type ElementType;
